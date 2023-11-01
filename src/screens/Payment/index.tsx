@@ -1,4 +1,5 @@
-import {Text, View, StyleSheet} from 'react-native'
+import { Text, View } from 'react-native'
+import styles from './style'
 
 interface PaymentProps {}
 
@@ -9,9 +10,5 @@ const Payment = (props: PaymentProps) => {
     </View>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {}
-})
 
 export default Payment

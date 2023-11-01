@@ -1,4 +1,5 @@
-import {Text, View, StyleSheet} from 'react-native'
+import { Text, View } from 'react-native'
+import styles from './styles'
 
 interface OrderHistoryProps {}
 
@@ -9,9 +10,5 @@ const OrderHistory = (props: OrderHistoryProps) => {
     </View>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {}
-})
 
 export default OrderHistory

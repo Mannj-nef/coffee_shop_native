@@ -2,7 +2,7 @@ import Cart from '../screens/Cart'
 import Home from '../screens/Home'
 
 import Favorite from '../screens/Favorite'
-import OrderHistory from '../screens/OrderHistory'
+import OrderHistory from '../screens/Order'
 import TapNavigator from './TabNavigator'
 import Payment from '../screens/Payment'
 import Detail from '../screens/Detail'

@@ -4,10 +4,11 @@ interface IconProps {
   name: string
   size?: number
   color: string
+  style?: {}
 }
 
-const Icon = ({ name, size, color }: IconProps) => {
-  return <MuiIcon name={name} color={color} size={size} />
+const Icon = ({ name, size, color, style }: IconProps) => {
+  return <MuiIcon name={name} color={color} size={size} style={style} />
 }
 
 export default Icon
