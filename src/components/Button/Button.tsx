@@ -1,15 +1,16 @@
 import * as React from 'react'
 import { Text, TouchableOpacity, StyleSheet } from 'react-native'
-import { BORDERRADIUS, COLORS, SPACING } from '../../themes'
+import { BORDERRADIUS, COLORS, FONTSIZE, SPACING } from '../../themes'
 
 interface ButtonProps {
   title: string
+  onPress?: () => void
 }
 
-const Button = ({ title }: ButtonProps) => {
+const Button = ({ title, onPress }: ButtonProps) => {
   return (
-    <TouchableOpacity style={styles.btnContainer}>
-      <Text style={[styles.propertyText]}>{title}</Text>
+    <TouchableOpacity style={styles.btnContainer} onPress={onPress}>
+      <Text style={[styles.propertyText, { fontSize: FONTSIZE.size_18, fontWeight: '700' }]}>{title}</Text>
     </TouchableOpacity>
   )
 }
@@ -19,7 +20,7 @@ export default Button
 const styles = StyleSheet.create({
   btnContainer: {
     minWidth: 240,
-    borderRadius: BORDERRADIUS.radius_25,
+    borderRadius: BORDERRADIUS.radius_15,
     backgroundColor: COLORS.primaryOrangeHex,
     alignItems: 'center',
     justifyContent: 'center',

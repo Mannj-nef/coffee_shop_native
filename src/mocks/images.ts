@@ -33,3 +33,9 @@ export const BEAN_IMAGE = {
 }
 
 export const CART_EMPTY = 'https://www.vhv.rs/dpng/d/521-5212497_empty-cart-hd-png-download.png'
+
+export const CARD_VISA_IMAGE = require('../assets/appImages/visa.png')
+export const WALLET_IMAGE = require('../assets/appImages/wallet.png')
+export const AMAZON_IMAGE = require('../assets/appImages/amazon.png')
+export const APPLE_IMAGE = require('../assets/appImages/apple.png')
+export const GOOGLE_IMAGE = require('../assets/appImages/google.png')
