@@ -7,6 +7,12 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.primaryBlackHex,
     paddingHorizontal: SPACING.space_30,
   },
+  imageEmptyWrapper: {
+    height: 300,
+  },
+  propertyText: {
+    color: COLORS.primaryWhiteHex,
+  },
 })
 
 export default styles

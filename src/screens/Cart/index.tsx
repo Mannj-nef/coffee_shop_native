@@ -1,40 +1,117 @@
-import { Text, View, ScrollView, ImageBackground } from 'react-native'
+import { View, ScrollView, TouchableOpacity, Text } from 'react-native'
 import styles from './style'
 import HeaderBar from '../../components/HeaderBar'
-import LinearGradient from 'react-native-linear-gradient'
 import { COLORS, FONTSIZE, SPACING } from '../../themes'
 import useShareStore from '../../stores/shared'
-import { CART_EMPTY } from '../../mocks/images'
 import Icon from '../../components/Icons'
 import CartItem from './components/CartItem'
-
+import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs'
+import { useNavigation } from '@react-navigation/native'
+import { SCREEN } from '../../navigators/stackScreen'
+import { Button } from '../../components/Button'
 interface CartProps {}
 
 const Cart = ({}: CartProps) => {
   const carts = useShareStore((state) => state.carts)
 
+  const navigation = useNavigation<any>()
+
+  const tabBarHeight = useBottomTabBarHeight()
+
   return (
     <View style={styles.container}>
       <HeaderBar ScreenTitle="Cart" />
 
-      <ScrollView>
-        {/* {!cart && (
-          <View style={styles.imageEmptyWrapper}>
-            <Icon name="cart" color="" size={FONTSIZE.size_30 * 10} />
+      <View
+        style={{
+          flex: 1,
+          marginBottom: tabBarHeight + 20,
+          justifyContent: 'space-between',
+        }}>
+        <ScrollView style={{ paddingVertical: 20 }}>
+          <View style={{}}>
+            {!carts?.length && (
+              <View style={styles.imageEmptyWrapper}>
+                <View
+                  style={[
+                    {
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                      height: '100%',
+                    },
+                  ]}>
+                  <Icon name="cart" color="" size={FONTSIZE.size_30 * 5} />
+                </View>
+              </View>
+            )}
+
+            <View
+              style={{
+                gap: SPACING.space_24,
+              }}>
+              {carts?.map((cart) => (
+                <TouchableOpacity
+                  key={cart?.id}
+                  onPress={() => {
+                    console.log(cart)
+
+                    navigation.navigate(SCREEN.detail.name, {
+                      id: cart.id,
+                      type: cart.type,
+                    })
+                  }}>
+                  <CartItem cart={cart} />
+                </TouchableOpacity>
+              ))}
+            </View>
           </View>
-        )} */}
+        </ScrollView>
 
-        <View
-          style={{
-            gap: SPACING.space_24,
-          }}>
-          {carts?.map((cart) => (
-            <CartItem key={cart?.id} cart={cart} />
-          ))}
+        {carts?.length ? (
+          <View
+            style={{
+              paddingTop: 10,
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+            }}>
+            <View style={{ alignItems: 'center' }}>
+              <Text style={[styles.propertyText]}>Total Price</Text>
 
-          {/* <CartItem /> */}
-        </View>
-      </ScrollView>
+              <View style={{ flexDirection: 'row', gap: SPACING.space_8 }}>
+                <Text
+                  style={[
+                    styles.propertyText,
+                    {
+                      color: COLORS.primaryOrangeHex,
+                      marginTop: SPACING.space_2,
+                      fontSize: FONTSIZE.size_24,
+                      fontWeight: '600',
+                    },
+                  ]}>
+                  {'$'}
+                </Text>
+
+                <Text
+                  style={[
+                    styles.propertyText,
+                    { marginTop: SPACING.space_2, fontSize: FONTSIZE.size_24, fontWeight: '600' },
+                  ]}>
+                  {10}
+                </Text>
+              </View>
+            </View>
+
+            <Button
+              onPress={() => {
+                navigation.navigate(SCREEN.payment)
+              }}
+              title="Pay"
+            />
+          </View>
+        ) : (
+          <></>
+        )}
+      </View>
     </View>
   )
 }
