@@ -11,6 +11,7 @@ const styles = StyleSheet.create({
   containerMain: {
     flexDirection: 'row',
     gap: SPACING.space_20,
+    marginBottom: 10,
   },
 
   cartItemImage: {
