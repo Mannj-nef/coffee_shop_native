@@ -7,7 +7,6 @@ import StatusBarComponent from '../../components/StatusBar'
 import { SPACING } from '../../themes'
 import useShareStore from '../../stores/shared'
 import SizeComponent from './components/size'
-import Bottom from './components/Bootom/bootem'
 
 const Detail = ({ navigation, route }: any) => {
   const detail = useShareStore((state) => state.detail)
@@ -20,7 +19,7 @@ const Detail = ({ navigation, route }: any) => {
     if (!id || !type) return
 
     setDetail({ id, type })
-  }, [detail])
+  }, [])
 
   const onBack = () => {
     navigation.pop()
@@ -39,8 +38,6 @@ const Detail = ({ navigation, route }: any) => {
 
         <View style={{ marginTop: 10, paddingHorizontal: SPACING.space_30, marginBottom: 30 }}>
           <SizeComponent />
-
-          <Bottom />
         </View>
       </ScrollView>
     </View>
