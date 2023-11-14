@@ -27,6 +27,26 @@ const styles = StyleSheet.create({
     marginBottom: SPACING.space_12,
     fontSize: FONTSIZE.size_20,
   },
+
+  detailBootom: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop: SPACING.space_20,
+  },
+
+  detailBootomLeft: {
+    alignItems: 'center',
+  },
+
+  detailBootomLeftPrice: {
+    flexDirection: 'row',
+    gap: SPACING.space_8,
+  },
+  detailBootomLeftPropertyText: {
+    marginTop: SPACING.space_2,
+    fontSize: FONTSIZE.size_24,
+    fontWeight: '600',
+  },
 })
 
 export default styles
