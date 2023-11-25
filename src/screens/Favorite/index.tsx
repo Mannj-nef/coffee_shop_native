@@ -4,12 +4,14 @@ import ImageBackgroundInfo from '../../components/ImageBackgroundInfo'
 import StatusBarComponent from '../../components/StatusBar'
 import HeaderBar from '../../components/HeaderBar'
 import useShareStore from '../../stores/shared'
-import { COLORS } from '../../themes'
+import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs'
 
 interface FavoriteProps {}
 
 const Favorite = (props: FavoriteProps) => {
   const detail = useShareStore((state) => state.detail)
+
+  const tabBarHeight = useBottomTabBarHeight()
 
   return (
     <View style={styles.container}>
@@ -18,7 +20,7 @@ const Favorite = (props: FavoriteProps) => {
       <HeaderBar ScreenTitle="Favorites" />
 
       {detail && (
-        <ScrollView>
+        <ScrollView style={{ marginBottom: tabBarHeight }}>
           <View style={{ gap: 20 }}>
             <ImageBackgroundInfo screen="favorite" coffee={detail} />
             <ImageBackgroundInfo screen="favorite" coffee={detail} />
