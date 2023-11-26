@@ -26,12 +26,11 @@ const Home = ({ navigation }: any) => {
   return (
     <View style={styles.container}>
       <StatusBarComponent />
+      <View style={{ paddingHorizontal: SPACING.space_30 }}>
+        <HeaderBar />
+      </View>
 
       <ScrollView>
-        <View style={{ paddingHorizontal: SPACING.space_30 }}>
-          <HeaderBar />
-        </View>
-
         <Text style={styles.ScreenTitle}>Find the best {'\n'}coffee for you</Text>
 
         <Search />
