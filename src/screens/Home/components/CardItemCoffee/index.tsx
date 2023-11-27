@@ -1,16 +1,18 @@
-import { Text, View, Image, TouchableOpacity, ImageBackground } from 'react-native'
+import { Text, View, TouchableOpacity, ImageBackground } from 'react-native'
 import styles from './styles'
-import { COFFEE_IMAGE } from '../../../../mocks/images'
 import BGIcon from '../../../../components/BGIcon'
 import { COLORS, FONTSIZE } from '../../../../themes'
 import LinearGradient from 'react-native-linear-gradient'
-import { typeCoffe } from '../../../../types/coffee'
+import { TCarts, typeCoffe } from '../../../../types/coffee'
+import useCart from '../../../../hooks/useCart'
 
 interface CardItemCoffeeProps {
   coffee: typeCoffe
 }
 
 const CardItemCoffee = ({ coffee }: CardItemCoffeeProps) => {
+  const { handleAddCard } = useCart()
+
   return (
     <LinearGradient
       start={{ x: 0, y: 0 }}
@@ -29,7 +31,10 @@ const CardItemCoffee = ({ coffee }: CardItemCoffeeProps) => {
             <Text style={styles.price}>{coffee.prices[0].price}</Text>
           </View>
 
-          <TouchableOpacity onPress={() => {}}>
+          <TouchableOpacity
+            onPress={() => {
+              handleAddCard({ item: coffee as TCarts })
+            }}>
             <BGIcon
               color={COLORS.primaryWhiteHex}
               name={'plus'}
