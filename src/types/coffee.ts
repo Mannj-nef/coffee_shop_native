@@ -16,3 +16,14 @@ export type typeCoffe = {
   type: string
   index: number
 }
+
+export type TCarts = typeCoffe & {
+  amount: number
+  total_price: number
+  sizes: price[]
+}
+
+export enum EActionAmountCart {
+  DECREASE_CARD,
+  INCREASE_CARD,
+}
